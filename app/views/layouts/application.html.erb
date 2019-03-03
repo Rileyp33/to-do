@@ -22,15 +22,20 @@
 
         <div class="top-bar-right">
           <ul class="menu">
-            <%- if current_user -%>
-              <li class="menu-text"><%= current_user.first_name %></li>
-              <li class="menu-text">|</li>
-              <li class="menu-link user"><a href=<%= "/users/#{current_user.id}" %>>Profile</a></li>
-              <li class="menu-link"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-            <%- else -%>
-              <li class="menu-link"><%= link_to 'Sign Up', new_user_registration_path %></li>
-              <li class="menu-link"><%= link_to 'Sign In', new_user_session_path %></li>
-            <%- end -%>
+
+
+            <div class="top-bar-right">
+              <ul class="menu">
+                <%- if current_user -%>
+                  <li class="menu-link"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+                <%- else -%>
+                  <li class="menu-link"><%= link_to 'Sign Up', new_user_registration_path %></li>
+                  <li class="menu-link"><%= link_to 'Sign In', new_user_session_path %></li>
+                  <li class="menu-link"><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %></li>
+                <%- end -%>
+              </ul>
+            </div>
+
           </ul>
         </div>
       </nav>
@@ -43,6 +48,10 @@
         </div>
       </div>
     <%- end -%>
+
+    <% if current_user %>
+      <%= current_user.email %>
+    <% end %>
 
       <%= yield %>
 

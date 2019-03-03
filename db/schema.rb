@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_03_01_211951) do
   create_table "tasks", force: :cascade do |t|
     t.bigint "list_id", null: false
     t.string "name", null: false
+    t.boolean "completed", default: false
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

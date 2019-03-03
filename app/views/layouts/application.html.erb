@@ -13,45 +13,40 @@
   </head>
 
   <body>
-      <nav class="top-bar">
-        <div class="top-bar-left">
-         <ul class="menu">
-           <li class="menu-text">My Projects</li>
-         </ul>
-       </div>
+    <div class="spacer-row"></div>
+    <div class="row">
+      <div class="small-12 columns nav-bar">
+        <nav class="top-bar">
+          <div class="top-bar-left">
+           <ul class="menu">
+             <li class="menu-text">
+               <% if current_user %>
+                 <%= current_user.email %>
+               <% else %>
+                 Sign in or sign up to start planning
+               <% end %>
+             </li>
+           </ul>
+         </div>
 
-        <div class="top-bar-right">
-          <ul class="menu">
-
-
-            <div class="top-bar-right">
-              <ul class="menu">
-                <%- if current_user -%>
-                  <li class="menu-link"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-                <%- else -%>
-                  <li class="menu-link"><%= link_to 'Sign Up', new_user_registration_path %></li>
-                  <li class="menu-link"><%= link_to 'Sign In', new_user_session_path %></li>
-                  <li class="menu-link"><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %></li>
-                <%- end -%>
-              </ul>
-            </div>
-
-          </ul>
-        </div>
-      </nav>
-
-    <%- flash.each do |key, value| -%>
-      <div class="spacer-one"></div>
-      <div class="row">
-        <div class="flash flash-<%= key %>">
-          <%= value %>
-        </div>
+          <div class="top-bar-right">
+            <ul class="menu">
+              <div class="top-bar-right">
+                <ul class="menu">
+                  <%- if current_user -%>
+                    <li class="callout button menu-link sign-out"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+                  <%- else -%>
+                    <li class="callout button menu-link sign-up"><%= link_to 'Sign Up', new_user_registration_path %></li>
+                    <li class="callout button menu-link sign-in"><%= link_to 'Sign In', new_user_session_path %></li>
+                    <li class="callout button menu-link google-sign-in"><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %></li>
+                  <%- end -%>
+                </ul>
+              </div>
+            </ul>
+          </div>
+        </nav>
       </div>
-    <%- end -%>
-
-    <% if current_user %>
-      <%= current_user.email %>
-    <% end %>
+    </div>
 
       <%= yield %>
 

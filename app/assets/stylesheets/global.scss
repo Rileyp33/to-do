@@ -1,0 +1,65 @@
+@import '_colors';
+
+body {
+  background-color: $core-dark;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+
+.spacer-row {
+  margin-top: 1rem;
+  color: transparent;
+}
+
+.nav-bar {
+  padding: 0px;
+}
+
+.top-bar {
+  padding: 0px;
+  background-color: $core-gray;
+}
+
+.top-bar ul {
+  background-color: $core-gray;
+}
+
+.menu {
+  color: $core-dark;
+}
+
+.menu-link {
+  margin: 0px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border: 2px solid transparent;
+}
+
+.menu-link:hover {
+  background-color: $core-dark;
+  color: $core-eggshell;
+  border-bottom: 2px solid $core-salmon;
+}
+
+.sign-up {
+  background-color: $core-orange;
+}
+
+.sign-in {
+  background-color: $alt-purple;
+}
+
+.sign-out {
+  background-color: $core-salmon;
+}
+
+.google-sign-in {
+  background-color: $core-salmon;
+}

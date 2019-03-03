@@ -1,0 +1,44 @@
+@import '_colors';
+
+.list-wrapper {
+  padding: 0px;
+  height: 89.5%;
+}
+
+.list-bar {
+  height: 90%;
+  border: none;
+  padding: 0rem;
+  padding-top: 6px;
+  background-color: $core-dark;
+  height: 100%;
+}
+
+.list-header {
+  background-color: $core-orange;
+  color: white;
+  border: 0px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0px;
+}
+
+.list-tile {
+  text-align: left;
+  font-size: 1.1rem;
+  margin-bottom: 0rem;
+  border: 12px solid $core-dark;
+  border-top: 8px solid $core-dark;
+  border-bottom: 0px;
+  background-color: $core-eggshell;
+  color: $core-salmon;
+  font-weight: bold;
+}
+
+.list-tile:hover {
+  background-color: $core-dark;
+  color: white;
+  border: 8px solid $core-dark;
+  border-bottom: 2px solid $core-salmon;
+  // border-bottom: 0px;
+}

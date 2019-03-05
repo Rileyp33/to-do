@@ -10,13 +10,13 @@
 
 .list-wrapper {
   padding: 0px;
-  height: 90%;
+  height: 89%;
 }
 
 .task-wrapper {
   border-left: 1rem solid $core-eggshell;
   padding: 0px;
-  height: 90%;
+  height: 89%;
 }
 
 .list-bar {
@@ -125,6 +125,7 @@
 }
 
 .list-tile {
+  padding: 0px;
   font-size: 1.1rem;
   border: transparent;
   border-radius: 4px;
@@ -132,6 +133,10 @@
   color: $alt-purple;
   font-weight: bold;
   text-align: left;
+}
+
+.list-text {
+  padding: 1rem;
 }
 
 .list-tile:hover {
@@ -217,4 +222,23 @@
 @keyframes slide-in {
   from { width: 20% }
   to { width: 100% }
+}
+
+.list-delete {
+  border: 1px solid;
+  border-color: inherit;
+  font-weight: bold;
+  padding: 5px;
+  margin-top: .7rem;
+  text-align: center;
+  background-color: transparent;
+  color: inherit;
+  border-radius: 4px;
+}
+
+.list-delete:hover {
+  border-color: transparent;
+  background-color: white;
+  color: $core-salmon;
+  -webkit-transition: background-color 0.1s ease-in, color 0.1s ease-in;
 }

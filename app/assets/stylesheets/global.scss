@@ -2,6 +2,7 @@
 
 body {
   background-color: $core-dark;
+  font-family: "Karla", sans-serif;
 }
 
 a {
@@ -18,7 +19,7 @@ a:hover {
 }
 
 .menu-text {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   color: $core-dark !important;
 }
 
@@ -60,6 +61,7 @@ a:hover {
   color: white;
   font-weight: bold;
   border: 2px solid transparent;
+  font-size: 1rem;
 }
 
 .menu-link:hover {

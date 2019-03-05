@@ -11,6 +11,11 @@ class App extends Component {
       selectedListData: null
     }
     this.setSelectedList = this.setSelectedList.bind(this)
+    this.updateListData = this.updateListData.bind(this)
+  }
+
+  updateListData(response) {
+    this.setState({ listData: response })
   }
 
   componentDidMount() {
@@ -59,6 +64,7 @@ class App extends Component {
             <ListContainer
               data={this.state.listData}
               selectorFunction={this.setSelectedList}
+              updateListData={this.updateListData}
             />
             <TaskContainer
               data={this.state.selectedListData}

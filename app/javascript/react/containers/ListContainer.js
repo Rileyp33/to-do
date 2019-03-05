@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import ListTile from '../components/ListTile'
+import NewListContainer from './NewListContainer'
 
 class ListContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedList: null
+      selectedList: null,
+      newListVisible: false
     }
     this.setSelectedList = this.setSelectedList.bind(this)
+    this.toggleNew = this.toggleNew.bind(this)
   }
 
   setSelectedList(listId) {
     this.setState({ selectedList: listId })
-    console.log("selected list:");
-    console.log(this.state.selectedList);
+  }
+
+  toggleNew() {
+    this.setState({ newListVisible: !this.state.newListVisible })
   }
 
   render() {
@@ -32,10 +37,26 @@ class ListContainer extends Component {
       )
     })
 
+    let newListForm;
+    if (this.state.newListVisible === true) {
+      newListForm = <NewListContainer
+        updateListData={this.props.updateListData}
+        toggleNew={this.toggleNew}
+      />
+    }
+
     return(
       <div className="small-4 columns list-wrapper">
-        <div className="small-12 columns callout list-header">My Lists</div>
+        <div className="small-12 columns callout list-header">
+          <div className="small-10 columns list-header-text">My Lists</div>
+          <div
+            className="small-2 columns list-header-new"
+            onClick={this.toggleNew}>
+            +
+          </div>
+        </div>
         <div className="small-12 columns callout list-bar">
+          {newListForm}
           {lists}
         </div>
       </div>

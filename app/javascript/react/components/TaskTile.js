@@ -15,8 +15,8 @@ const TaskTile = (props) => {
       <div
         className={"small-12 columns callout button task-tile " + selectedTask}
         onClick={props.handleClick}>
-        <div className={taskName}>{props.data.name}</div>
-        {notes}
+          <div className={taskName}>{props.data.name}</div>
+          {notes}
       </div>
     </div>
   )

@@ -9,7 +9,16 @@ const ListTile = (props) => {
     <div
       onClick={props.handleClick}
       className={"small-12 columns callout button list-tile " + selectedList}>
-      {props.listData.name}
+        <div className="small-8 columns list-text">{props.listData.name}</div>
+        <div className="small-4 columns button-area">
+          <div className="small-5 columns list-delete">✎</div>
+          <div
+            className="small-5 columns list-delete"
+            onClick={props.handleDelete}
+            >
+            ✘
+          </div>
+        </div>
     </div>
   )
 }

@@ -11,6 +11,7 @@ class ListContainer extends Component {
     }
     this.setSelectedList = this.setSelectedList.bind(this)
     this.toggleNew = this.toggleNew.bind(this)
+    this.deleteList = this.deleteList.bind(this)
   }
 
   setSelectedList(listId) {
@@ -21,11 +22,42 @@ class ListContainer extends Component {
     this.setState({ newListVisible: !this.state.newListVisible })
   }
 
+  deleteList(listId) {
+    fetch(`/lists/${listId}`, {
+      'method': 'DELETE',
+      'headers': {
+        'Accept': 'application/json',
+        'Content-Type': "application/json"
+      },
+      'body': JSON.stringify({
+        'list': { 'id': listId }
+      })
+    })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        console.log(body);
+        this.props.updateListData(body)
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   render() {
     let lists = this.props.data.map(l => {
       let handleClick = () => {
         this.props.selectorFunction(l.id)
         this.setSelectedList(l.id)
+      }
+      let handleDelete = () => {
+        this.deleteList(l.id)
       }
       return(
         <ListTile
@@ -33,6 +65,7 @@ class ListContainer extends Component {
           selectedList={this.state.selectedList}
           listData={l}
           handleClick={handleClick}
+          handleDelete={handleDelete}
         />
       )
     })

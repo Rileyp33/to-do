@@ -80,12 +80,32 @@
   border-radius: 10px;
 }
 
+.list-header-text {
+  padding: 0px;
+}
+
+.list-header-new {
+  font-weight: bold;
+  padding: 0px;
+  text-align: center;
+  background-color: $core-dark;
+  color: white;
+  border-radius: 4px;
+  -webkit-transition: background-color 0.1s ease-in, color 0.1s ease-in;
+}
+
+.list-header-new:hover {
+  background-color: white;
+  color: $core-salmon;
+  -webkit-transition: background-color 0.1s ease-in, color 0.1s ease-in;
+}
+
 .list-header {
   background-color: $core-salmon;
   color: white;
   border: 0px;
   border-bottom: 3px solid $core-dark;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
   margin: 0px;
   border-top-left-radius: 8px;
@@ -97,7 +117,7 @@
   color: white;
   border: 0px;
   border-bottom: 3px solid $core-dark;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
   margin: 0px;
   border-top-left-radius: 8px;
@@ -159,4 +179,42 @@
 
 .task-notes {
   border-radius: 5px;
+}
+
+.submit-new {
+  padding: 1rem;
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
+  text-align: center;
+  background-color: $alt-purple;
+  color: white;
+  border: none;
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+  -webkit-transition: background-color 0.1s ease-in, color 0.1s ease-in;
+  text-align: left;
+  direction: ltr !important;
+}
+
+.submit-new:hover {
+  background-color: $core-orange;
+  color: white;
+  -webkit-transition: background-color 0.1s ease-in, color 0.1s ease-in;
+}
+
+.input-group-field {
+  border: 2px solid $core-eggshell;
+  border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
+  direction: ltr;
+}
+
+.input-group {
+  animation-name: slide-in;
+  animation-duration: .7s;
+}
+
+@keyframes slide-in {
+  from { width: 20% }
+  to { width: 100% }
 }

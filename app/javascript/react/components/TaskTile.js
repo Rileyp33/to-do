@@ -1,10 +1,23 @@
 import React from 'react';
 
 const TaskTile = (props) => {
+  let selectedTask;
+  let taskName = "task-name";
+  let notes;
+  if (props.selectedTask === props.data.id) {
+    selectedTask = "selected-task"
+    taskName = "selected-task-name"
+    notes = <div className="small-12 columns callout task-notes">{props.data.notes}</div>
+  }
+
   return(
-    <div
-      className="small-12 columns callout task-tile">
-      {props.data.name}
+    <div>
+      <div
+        className={"small-12 columns callout button task-tile " + selectedTask}
+        onClick={props.handleClick}>
+        <div className={taskName}>{props.data.name}</div>
+        {notes}
+      </div>
     </div>
   )
 }

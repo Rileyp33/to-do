@@ -5,7 +5,13 @@ class TaskContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedTask: null
     }
+    this.setSelectedTask = this.setSelectedTask.bind(this)
+  }
+
+  setSelectedTask(taskId) {
+    this.setState({ selectedTask: taskId })
   }
 
   render() {
@@ -16,8 +22,16 @@ class TaskContainer extends Component {
     let tasks;
     if (this.props.data) {
       tasks = this.props.data.tasks.map(t => {
+        let handleClick = () => {
+          this.setSelectedTask(t.id)
+        }
         return(
-          <TaskTile data={t} />
+          <TaskTile
+            key={t.id}
+            data={t}
+            selectedTask={this.state.selectedTask}
+            handleClick={handleClick}
+          />
         )
       })
     }

@@ -22,8 +22,10 @@
 .list-bar {
   height: 90%;
   border: none;
+  border-top: 6px solid $core-dark;
   padding: 0rem;
   padding-top: 4px;
+  padding-right: .9rem;
   background-color: $core-dark;
   height: 100%;
   border-bottom-left-radius: 8px;
@@ -42,7 +44,7 @@
   background-color: $core-dark;
   height: 100%;
   border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-bottom-right-radius: 10px;
   overflow: scroll;
   direction: rtl;
   text-align: left;
@@ -79,7 +81,7 @@
 }
 
 .list-header {
-  background-color: $core-orange;
+  background-color: $core-salmon;
   color: white;
   border: 0px;
   border-bottom: 3px solid $core-dark;
@@ -103,29 +105,58 @@
 }
 
 .list-tile {
-  text-align: left;
   font-size: 1.1rem;
-  margin-bottom: 0rem;
-  border-left: 1px solid $core-dark;
-  border-right: 15px solid $core-dark;
-  border-top: 8px solid $core-dark;
-  border-bottom: 0px;
-  background-color: $core-eggshell;
-  color: $core-salmon;
+  border: transparent;
+  border-radius: 4px;
+  background-color: white;
+  color: $alt-purple;
   font-weight: bold;
+  text-align: left;
+}
+
+.list-tile:hover {
+  background-color: $core-orange;
+  color: white;
 }
 
 .task-tile {
   font-size: 1.1rem;
   border: 0px;
   border-radius: 4px;
-  background-color: $core-eggshell;
+  background-color: white;
   color: $core-dark;
+  text-align: left;
 }
 
-.list-tile:hover {
+.task-tile:hover {
+  background-color: $core-eggshell;
+  color: black;
+}
+
+.selected-list {
+  background-color: $alt-purple;
+  color: $core-eggshell;
+}
+
+.selected-list:hover {
+  background-color: $alt-purple;
+  color: $core-eggshell;
+}
+
+.selected-task:hover {
   background-color: white;
-  color: $alt-purple;
-  border-top: 7px solid $core-dark;
-  border-bottom: 1px solid $core-dark;
+}
+
+.task-name {
+  font-weight: bold;
+}
+
+.selected-task-name {
+  font-weight: bold;
+  padding-bottom: .75rem;
+  color: $core-salmon;
+}
+
+.task-notes {
+  border-radius: 5px;
 }

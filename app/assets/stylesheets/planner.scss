@@ -207,6 +207,27 @@
   -webkit-transition: background-color 0.1s ease-in, color 0.1s ease-in;
 }
 
+.submit-edit {
+  padding: 1rem;
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  text-align: center;
+  background-color: $core-dark;
+  color: white;
+  border: none;
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+  -webkit-transition: background-color 0.1s ease-in, color 0.1s ease-in;
+  text-align: left;
+  direction: ltr !important;
+}
+
+.submit-edit:hover {
+  background-color: $core-orange;
+  color: white;
+  -webkit-transition: background-color 0.1s ease-in, color 0.1s ease-in;
+}
+
 .input-group-field {
   border: 2px solid $core-eggshell;
   border-top-right-radius: 4px !important;
@@ -241,4 +262,13 @@
   background-color: white;
   color: $core-salmon;
   -webkit-transition: background-color 0.1s ease-in, color 0.1s ease-in;
+}
+
+.edit-form-container {
+  padding-left: .5rem;
+}
+
+.edit-form {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
 }

@@ -41,12 +41,8 @@ class App extends Component {
 
   setSelectedList(selectedId) {
     this.setState({ selectedList: selectedId })
-    console.log("Function called:");
-    console.log(this.state.selectedList);
     let selectedData = this.state.listData.find(l => l.id == selectedId)
     this.setState({ selectedListData: selectedData })
-    console.log("Selected data:");
-    console.log(this.state.selectedListData);
   }
 
   render() {

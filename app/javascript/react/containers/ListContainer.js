@@ -7,11 +7,13 @@ class ListContainer extends Component {
     super(props);
     this.state = {
       selectedList: null,
-      newListVisible: false
+      newListVisible: false,
+      editShowId: null
     }
     this.setSelectedList = this.setSelectedList.bind(this)
     this.toggleNew = this.toggleNew.bind(this)
     this.deleteList = this.deleteList.bind(this)
+    this.toggleEdit = this.toggleEdit.bind(this)
   }
 
   setSelectedList(listId) {
@@ -20,6 +22,15 @@ class ListContainer extends Component {
 
   toggleNew() {
     this.setState({ newListVisible: !this.state.newListVisible })
+  }
+
+  toggleEdit(listId) {
+    if (this.state.editShowId === listId) {
+      this.setState({ editShowId: null })
+    }
+    else {
+      this.setState({ editShowId: listId })
+    }
   }
 
   deleteList(listId) {
@@ -46,26 +57,33 @@ class ListContainer extends Component {
       .then(body => {
         console.log(body);
         this.props.updateListData(body)
+        this.props.selectorFunction(null)
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
     let lists = this.props.data.map(l => {
-      let handleClick = () => {
+      let handleSelect = () => {
         this.props.selectorFunction(l.id)
         this.setSelectedList(l.id)
       }
       let handleDelete = () => {
         this.deleteList(l.id)
       }
+      let handleEdit = () => {
+        this.toggleEdit(l.id)
+      }
       return(
         <ListTile
           key={l.id}
           selectedList={this.state.selectedList}
           listData={l}
-          handleClick={handleClick}
+          handleSelect={handleSelect}
           handleDelete={handleDelete}
+          editShowId={this.state.editShowId}
+          handleEdit={handleEdit}
+          updateListData={this.props.updateListData}
         />
       )
     })

@@ -19,7 +19,19 @@ class ListsController < ApplicationController
     else
       render json: { error: @list.errors.full_messages }, status: :unprocessable_entity
     end
+  end
 
+  def update
+    target_id = update_list_params["id"]
+
+    if !current_user.nil? && current_user == List.find(target_id).user
+      list = List.find(target_id)
+      list.name = update_list_params["new_list_name"]
+      list.save
+      render json: List.where(user_id: current_user.id), each_serializer: ListIndexSerializer
+    else
+      render json: { error: @list.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   private
@@ -29,6 +41,10 @@ class ListsController < ApplicationController
 
   def destroy_list_params
     params.require(:list).permit(:id)
+  end
+
+  def update_list_params
+    params.require(:list).permit(:id, :new_list_name)
   end
 
 end

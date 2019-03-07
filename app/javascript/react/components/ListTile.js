@@ -10,6 +10,7 @@ const ListTile = (props) => {
   let NameOrEdit;
   if (props.editShowId === props.listData.id) {
     NameOrEdit = <EditListContainer
+      name={props.listData.name}
       id={props.listData.id}
       handleEdit={props.handleEdit}
       updateListData={props.updateListData}

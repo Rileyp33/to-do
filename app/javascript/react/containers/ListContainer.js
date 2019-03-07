@@ -63,7 +63,9 @@ class ListContainer extends Component {
   }
 
   render() {
-    let lists = this.props.data.map(l => {
+    let orderedLists = this.props.data.sort((a,b) => b.id - a.id)
+
+    let lists = orderedLists.map(l => {
       let handleSelect = () => {
         this.props.selectorFunction(l.id)
         this.setSelectedList(l.id)

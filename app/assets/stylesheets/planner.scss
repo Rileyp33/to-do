@@ -133,6 +133,7 @@
   color: $alt-purple;
   font-weight: bold;
   text-align: left;
+  direction: ltr;
 }
 
 .list-text {
@@ -151,6 +152,7 @@
   background-color: white;
   color: $core-dark;
   text-align: left;
+  direction: ltr;
 }
 
 .task-tile:hover {
@@ -199,6 +201,7 @@
   -webkit-transition: background-color 0.1s ease-in, color 0.1s ease-in;
   text-align: left;
   direction: ltr !important;
+  margin-bottom: 1rem !important;
 }
 
 .submit-new:hover {
@@ -215,11 +218,12 @@
   background-color: $core-dark;
   color: white;
   border: none;
-  border-top-left-radius: 4px !important;
-  border-bottom-left-radius: 4px !important;
+  border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
   -webkit-transition: background-color 0.1s ease-in, color 0.1s ease-in;
   text-align: left;
   direction: ltr !important;
+  margin-bottom: 0px !important;
 }
 
 .submit-edit:hover {
@@ -230,14 +234,16 @@
 
 .input-group-field {
   border: 2px solid $core-eggshell;
-  border-top-right-radius: 4px !important;
-  border-bottom-right-radius: 4px !important;
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
   direction: ltr;
+  margin-bottom: 0px;
 }
 
 .input-group {
   animation-name: slide-in;
   animation-duration: .7s;
+  margin-bottom: 0px;
 }
 
 @keyframes slide-in {
@@ -271,4 +277,39 @@
 .edit-form {
   margin-top: .5rem;
   margin-bottom: .5rem;
+}
+
+.new-task-form {
+  background-color: $core-eggshell;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.new-task-label {
+  padding: .45rem;
+  background-color: $core-dark;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px !important;
+  border: 0px;
+  text-align: center;
+}
+
+.submit-new-task {
+  border-radius: 6px;
+  border: 0px;
+  background-color: $core-salmon;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0px;
+  padding: .6rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.submit-new-task:hover {
+  background-color: white;
+  color: $core-salmon
 }

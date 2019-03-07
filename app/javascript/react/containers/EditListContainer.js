@@ -5,7 +5,7 @@ class EditListContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ""
+      text: this.props.name
     }
     this.handleClearForm = this.handleClearForm.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);

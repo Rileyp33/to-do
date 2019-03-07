@@ -7,7 +7,9 @@ const TaskTile = (props) => {
   if (props.selectedTask === props.data.id) {
     selectedTask = "selected-task"
     taskName = "selected-task-name"
-    notes = <div className="small-12 columns callout task-notes">{props.data.notes}</div>
+    if (props.data.notes) {
+      notes = <div className="small-12 columns callout task-notes">{props.data.notes}</div>
+    }
   }
 
   return(

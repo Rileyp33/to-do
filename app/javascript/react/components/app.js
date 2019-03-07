@@ -64,6 +64,8 @@ class App extends Component {
             />
             <TaskContainer
               data={this.state.selectedListData}
+              selectorFunction={this.setSelectedList}
+              updateListData={this.updateListData}
             />
           </div>
         </div>

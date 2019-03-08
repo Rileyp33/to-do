@@ -12,6 +12,7 @@ class TaskContainer extends Component {
     }
     this.setSelectedTask = this.setSelectedTask.bind(this)
     this.toggleNew = this.toggleNew.bind(this)
+    this.deleteTask = this.deleteTask.bind(this)
   }
 
   setSelectedTask(taskId) {
@@ -22,6 +23,35 @@ class TaskContainer extends Component {
     if (this.props.data) {
       this.setState({ newTaskVisible: !this.state.newTaskVisible })
     }
+  }
+
+  deleteTask(taskId) {
+    fetch(`/lists/${this.props.data.id}/tasks/${taskId}`, {
+      'method': 'DELETE',
+      'headers': {
+        'Accept': 'application/json',
+        'Content-Type': "application/json"
+      },
+      'body': JSON.stringify({
+        'task': { 'id': taskId }
+      })
+    })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        console.log(body);
+        this.props.updateListData(body)
+        this.props.selectorFunction(this.props.data.id)
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
@@ -38,12 +68,16 @@ class TaskContainer extends Component {
         let handleClick = () => {
           this.setSelectedTask(t.id)
         }
+        let handleDelete = () => {
+          this.deleteTask(t.id)
+        }
         return(
           <TaskTile
             key={t.id}
             data={t}
             selectedTask={this.state.selectedTask}
             handleClick={handleClick}
+            handleDelete={handleDelete}
           />
         )
       })

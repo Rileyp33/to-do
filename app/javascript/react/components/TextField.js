@@ -2,9 +2,9 @@ import React from 'react';
 
 const TextField = props => {
   return (
-    <div className='input-group'>
+    <div className='input-group new-form'>
       <input
-        className='input-group-field'
+        className='input-group-field new-text'
         name={props.name}
         onChange={props.handlerFunction}
         type='text'

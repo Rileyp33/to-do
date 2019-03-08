@@ -10,7 +10,7 @@ const EditTextField = props => {
         type='text'
         value={props.content} />
       <div className='input-group-button'>
-        <input type='submit' className='submit-edit' value='✓' />
+        <input type='submit' className='submit-edit' value='Save' />
       </div>
     </div>
   );

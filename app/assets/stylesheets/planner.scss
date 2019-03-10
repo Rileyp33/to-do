@@ -302,6 +302,7 @@
 .edit-form-container {
   padding-left: .5rem;
   padding-right: 0px;
+  direction: ltr;
 }
 
 .edit-form {
@@ -358,4 +359,54 @@
   border-right: 1px solid $core-dark;
   height: 1.75rem;
   color: transparent;
+}
+
+.check-button:hover {
+  background-color: green;
+}
+
+.edit-task-name {
+  padding-top: 0px;
+  direction: rtl;
+}
+
+.edit-task-form {
+  padding-left: 0px;
+}
+
+.edit-task-label {
+  padding: .7rem;
+  background-color: $core-dark;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px !important;
+  border: 0px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.edit-task-wrapper {
+  padding-left: 0px;
+}
+
+.submit-edit-task {
+  padding-top: .5rem !important;
+  padding-bottom: .5rem !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 4px;
+  background-color: $core-salmon;
+  color: white;
+  font-weight: bold;
+  border: 0px;
+}
+
+.submit-edit-task:hover {
+  background-color: white;
+  color: $core-salmon
+}
+
+.submit-edit-task:focus {
+  background-color: white;
+  color: $core-salmon
 }

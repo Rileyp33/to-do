@@ -13,6 +13,7 @@ class TaskContainer extends Component {
     this.setSelectedTask = this.setSelectedTask.bind(this)
     this.toggleNew = this.toggleNew.bind(this)
     this.deleteTask = this.deleteTask.bind(this)
+    this.toggleEdit = this.toggleEdit.bind(this)
   }
 
   setSelectedTask(taskId) {
@@ -22,6 +23,15 @@ class TaskContainer extends Component {
   toggleNew() {
     if (this.props.data) {
       this.setState({ newTaskVisible: !this.state.newTaskVisible })
+    }
+  }
+
+  toggleEdit(taskId) {
+    if (this.state.editShowId === taskId) {
+      this.setState({ editShowId: null })
+    }
+    else {
+      this.setState({ editShowId: taskId })
     }
   }
 
@@ -71,13 +81,20 @@ class TaskContainer extends Component {
         let handleDelete = () => {
           this.deleteTask(t.id)
         }
+        let handleEdit = () => {
+          this.toggleEdit(t.id)
+        }
         return(
           <TaskTile
             key={t.id}
             data={t}
             selectedTask={this.state.selectedTask}
+            selectList={this.props.selectorFunction}
             handleClick={handleClick}
             handleDelete={handleDelete}
+            handleEdit={handleEdit}
+            editShowId={this.state.editShowId}
+            updateListData={this.props.updateListData}
           />
         )
       })

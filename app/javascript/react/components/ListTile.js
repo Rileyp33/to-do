@@ -7,9 +7,9 @@ const ListTile = (props) => {
     selectedList = "selected-list"
   }
 
-  let NameOrEdit;
+  let nameOrEdit;
   if (props.editShowId === props.listData.id) {
-    NameOrEdit = <EditListContainer
+    nameOrEdit = <EditListContainer
       name={props.listData.name}
       id={props.listData.id}
       handleEdit={props.handleEdit}
@@ -18,14 +18,14 @@ const ListTile = (props) => {
       />
   }
   else {
-    NameOrEdit = <div className="small-8 columns list-text">{props.listData.name}</div>
+    nameOrEdit = <div className="small-8 columns list-text">{props.listData.name}</div>
   }
 
   return(
     <div
       onClick={props.handleSelect}
       className={"small-12 columns callout button list-tile " + selectedList}>
-        {NameOrEdit}
+        {nameOrEdit}
         <div className="small-4 columns button-area">
           <div
             className="small-5 columns list-delete"

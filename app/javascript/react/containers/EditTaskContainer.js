@@ -9,16 +9,17 @@ class EditTaskContainer extends Component {
       notesText: this.props.data.notes
     }
     this.handleClearForm = this.handleClearForm.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleEditSubmit = this.handleEditSubmit.bind(this);
     this.handleNameTextChange = this.handleNameTextChange.bind(this);
     this.handleNotesTextChange = this.handleNotesTextChange.bind(this);
+    this.handleCompleteSubmit = this.handleCompleteSubmit.bind(this)
   }
 
   handleClearForm() {
     this.setState({ nameText: "", notesText: "" })
   }
 
-  handleFormSubmit(event) {
+  handleEditSubmit(event) {
     event.preventDefault();
     let formPayload = {task: {
       list_id: `${this.props.data.list_id}`,
@@ -55,6 +56,43 @@ class EditTaskContainer extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  handleCompleteSubmit(event) {
+    event.preventDefault();
+    let completeFormPayload = {task: {
+      list_id: `${this.props.data.list_id}`,
+      task_id: `${this.props.data.id}`,
+      completed: ""
+    }};
+    fetch(`/lists/${this.props.data.list_id}/tasks/${this.props.data.id}`, {
+      credentials: 'same-origin',
+      method: 'PATCH',
+      body: JSON.stringify(completeFormPayload),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(response => {
+        console.log("From edit container:");
+        console.log(this.props.data.list_id);
+        console.log(this.props.data.id);
+        console.log(response);
+        this.props.updateListData(response)
+        this.props.selectList(this.props.data.list_id)
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   handleNameTextChange(event) {
     this.setState({ nameText: event.target.value })
   }
@@ -64,12 +102,11 @@ class EditTaskContainer extends Component {
   }
 
   render() {
-    console.log(this.props);
     return(
       <div className={"small-12 columns callout button task-tile"}>
         <div className="small-8 columns edit-task-wrapper">
           <form className="small-12 columns edit-form-container edit-task-form"
-                onSubmit={this.handleFormSubmit}>
+                onSubmit={this.handleEditSubmit}>
             <EditTaskTextField
               content={this.state.nameText}
               name='name'
@@ -102,7 +139,8 @@ class EditTaskContainer extends Component {
           </div>
           <div className="small-1 columns spacer">.</div>
           <div
-            className="small-4 columns task-crud check-button">
+            className="small-4 columns task-crud check-button"
+            onClick={this.handleCompleteSubmit}>
             ✓
           </div>
         </div>

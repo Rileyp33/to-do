@@ -14,10 +14,16 @@ class TaskContainer extends Component {
     this.toggleNew = this.toggleNew.bind(this)
     this.deleteTask = this.deleteTask.bind(this)
     this.toggleEdit = this.toggleEdit.bind(this)
+    this.handleCompleteSubmit = this.handleCompleteSubmit.bind(this)
   }
 
   setSelectedTask(taskId) {
-    this.setState({ selectedTask: taskId })
+    if (this.state.selectedTask === taskId) {
+      this.setState({ selectedTask: null })
+    }
+    else {
+      this.setState({ selectedTask: taskId })
+    }
   }
 
   toggleNew() {
@@ -64,6 +70,40 @@ class TaskContainer extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  handleCompleteSubmit(taskId) {
+    event.preventDefault();
+    let completeFormPayload = {task: {
+      list_id: `${this.props.data.id}`,
+      task_id: taskId,
+      completed: ""
+    }};
+    fetch(`/lists/${this.props.data.id}/tasks/${taskId}`, {
+      credentials: 'same-origin',
+      method: 'PATCH',
+      body: JSON.stringify(completeFormPayload),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        this.props.updateListData(response)
+        this.props.selectorFunction(this.props.data.id)
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   render() {
     let listName = "Task Manager"
     if (this.props.data) {
@@ -84,8 +124,15 @@ class TaskContainer extends Component {
         let handleEdit = () => {
           this.toggleEdit(t.id)
         }
+        let handleComplete = () => {
+          this.handleCompleteSubmit(t.id)
+        }
+        let isCompleted;
+        if (t.completed === true) { isCompleted = "completed" }
+
         return(
           <TaskTile
+            isCompleted={isCompleted}
             key={t.id}
             data={t}
             selectedTask={this.state.selectedTask}
@@ -95,6 +142,7 @@ class TaskContainer extends Component {
             handleEdit={handleEdit}
             editShowId={this.state.editShowId}
             updateListData={this.props.updateListData}
+            handleComplete={handleComplete}
           />
         )
       })

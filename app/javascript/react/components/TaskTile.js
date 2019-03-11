@@ -3,6 +3,10 @@ import EditTaskContainer from '../containers/EditTaskContainer'
 
 const TaskTile = (props) => {
   let selectedTask;
+  let completedStrike;
+  if (props.isCompleted === "completed") {
+    completedStrike = "completed-strike"
+  }
   let taskName = "task-name";
   let notes;
   if (props.selectedTask === props.data.id) {
@@ -25,9 +29,9 @@ const TaskTile = (props) => {
   }
   else (
     showOrEdit = <div
-      className={"small-12 columns callout button task-tile " + selectedTask}
+      className={"small-12 columns callout button task-tile " + selectedTask + " " + props.isCompleted}
       onClick={props.handleClick}>
-        <div className={"small-8 columns " + taskName}>{props.data.name}</div>
+        <div className={"small-8 columns " + taskName + " " + completedStrike}>{props.data.name}</div>
         <div className="small-4 columns task-button-area">
           <div
             className="small-2 columns task-crud"
@@ -42,7 +46,8 @@ const TaskTile = (props) => {
           </div>
           <div className="small-1 columns spacer">.</div>
           <div
-            className="small-4 columns task-crud check-button">
+            className="small-4 columns task-crud check-button"
+            onClick={props.handleComplete}>
             ✓
           </div>
         </div>

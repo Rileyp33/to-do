@@ -17,7 +17,13 @@ class ListContainer extends Component {
   }
 
   setSelectedList(listId) {
-    this.setState({ selectedList: listId })
+    if (this.state.selectedList === listId) {
+      this.props.selectorFunction(null)
+      this.setState({ selectedList: null })
+    }
+    else {
+      this.setState({ selectedList: listId })
+    }
   }
 
   toggleNew() {

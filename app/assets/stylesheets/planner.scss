@@ -362,7 +362,7 @@
 }
 
 .check-button:hover {
-  background-color: green;
+  background-color: $alt-purple;
 }
 
 .edit-task-name {
@@ -409,4 +409,27 @@
 .submit-edit-task:focus {
   background-color: white;
   color: $core-salmon
+}
+
+@keyframes slide-in {
+  from { width: 20% }
+  to { width: 100% }
+}
+
+.completed {
+  background-color: #009688;
+  color: white;
+  transform: rotateX( 360deg );
+  transition: transform 0.5s, background-color 1s ease-in;
+}
+
+.completed:hover {
+  background-color: #009688;
+  color: white;
+  transform: rotateX( 360deg );
+  transition: transform 0.5s, background-color 1s ease-in;
+}
+
+.completed-strike {
+  text-decoration: line-through;
 }

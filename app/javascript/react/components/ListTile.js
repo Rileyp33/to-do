@@ -7,6 +7,17 @@ const ListTile = (props) => {
     selectedList = "selected-list"
   }
 
+  let completedListText;
+  let completedListBackground;
+  let completionArray = []
+  props.listData.tasks.forEach(t => {
+    completionArray.push(t.completed)
+  })
+  if (!completionArray.includes(false) && completionArray.length >= 1) {
+    completedListText = "completed-list-text"
+    completedListBackground = "completed-list-background"
+  }
+
   let nameOrEdit;
   if (props.editShowId === props.listData.id) {
     nameOrEdit = <EditListContainer
@@ -18,13 +29,13 @@ const ListTile = (props) => {
       />
   }
   else {
-    nameOrEdit = <div className="small-8 columns list-text">{props.listData.name}</div>
+    nameOrEdit = <div className={"small-8 columns list-text " + completedListText}>{props.listData.name}</div>
   }
 
   return(
     <div
       onClick={props.handleSelect}
-      className={"small-12 columns callout button list-tile " + selectedList}>
+      className={"small-12 columns callout button list-tile " + completedListBackground + " " + selectedList}>
         {nameOrEdit}
         <div className="small-4 columns button-area">
           <div

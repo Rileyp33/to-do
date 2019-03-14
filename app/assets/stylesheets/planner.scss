@@ -60,7 +60,7 @@
 }
 
 .list-bar::-webkit-scrollbar-thumb {
-  background-color: $core-gray;
+  background-color: $alt-light-gray;
   border: 4px solid $core-dark;
   border-radius: 10px;
 }
@@ -75,7 +75,7 @@
 }
 
 .task-bar::-webkit-scrollbar-thumb {
-  background-color: $core-gray;
+  background-color: $alt-light-gray;
   border: 4px solid $core-dark;
   border-radius: 10px;
 }
@@ -130,7 +130,7 @@
   border: transparent;
   border-radius: 4px;
   background-color: white;
-  color: $alt-purple;
+  color: $core-dark;
   font-weight: bold;
   text-align: left;
   direction: ltr;
@@ -141,7 +141,7 @@
 }
 
 .list-tile:hover {
-  background-color: $core-orange;
+  background-color: $alt-light-gray;
   color: white;
 }
 
@@ -156,12 +156,12 @@
 }
 
 .task-tile:hover {
-  background-color: $core-eggshell;
-  color: black;
+  background-color: $alt-light-gray;
+  color: white;
 }
 
 .selected-list {
-  background-color: $alt-purple;
+  background-color: $alt-purple !important;
   color: $core-eggshell;
 }
 
@@ -188,6 +188,9 @@
 
 .task-notes {
   border-radius: 5px;
+  white-space: pre-line;
+  word-wrap: break-word;
+  line-height: 1.4rem;
 }
 
 .submit-new {
@@ -240,6 +243,11 @@
   border-bottom-left-radius: 4px !important;
   direction: ltr;
   margin-bottom: 0px;
+}
+
+.text-area {
+  direction: ltr;
+  min-height: 100px;
 }
 
 .new-text {
@@ -320,13 +328,16 @@
 }
 
 .new-task-label {
-  padding: .45rem;
+  padding: .7rem;
+  padding-top: .45rem;
+  padding-bottom: .45rem;
   background-color: $core-dark;
   color: white;
   font-weight: bold;
   border-radius: 4px !important;
   border: 0px;
-  text-align: center;
+  text-align: left;
+  max-width: 11%;
 }
 
 .submit-new-task {
@@ -381,12 +392,21 @@
   font-weight: bold;
   border-radius: 4px !important;
   border: 0px;
-  text-align: center;
+  text-align: left;
   font-size: 1rem;
 }
 
 .edit-task-wrapper {
   padding-left: 0px;
+  direction: ltr;
+}
+
+.edit-task-text-area {
+  min-height: 100px;
+}
+
+.new-task-text-area {
+  max-width: 89%;
 }
 
 .submit-edit-task {
@@ -417,14 +437,14 @@
 }
 
 .completed {
-  background-color: #009688;
+  background-color: $alt-gray;
   color: white;
   transform: rotateX( 360deg );
   transition: transform 0.5s, background-color 1s ease-in;
 }
 
 .completed:hover {
-  background-color: #009688;
+  background-color: $alt-gray;
   color: white;
   transform: rotateX( 360deg );
   transition: transform 0.5s, background-color 1s ease-in;
@@ -432,4 +452,20 @@
 
 .completed-strike {
   text-decoration: line-through;
+  color: white;
+}
+
+.completed-list-text {
+  text-decoration: line-through;
+}
+
+.completed-list-background {
+  background-color: $alt-gray;
+  color: white;
+  transform: rotateX( 360deg );
+  transition: transform 0.5s, background-color 0.1s ease-in, color 0.1s ease-in;
+}
+
+.completed-list-background:hover {
+  -webkit-transition: background-color 0.1s ease-in, color 0.1s ease-in;
 }

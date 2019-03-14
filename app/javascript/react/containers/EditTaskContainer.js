@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EditTaskTextField from '../components/EditTaskTextField'
+import EditTaskTextArea from '../components/EditTaskTextArea'
 
 class EditTaskContainer extends Component {
   constructor(props) {
@@ -108,17 +109,17 @@ class EditTaskContainer extends Component {
           <form className="small-12 columns edit-form-container edit-task-form"
                 onSubmit={this.handleEditSubmit}>
             <EditTaskTextField
-              content={this.state.nameText}
-              name='name'
               label='Task'
+              name='name'
+              content={this.state.nameText}
               handlerFunction={this.handleNameTextChange}
             />
-              <EditTaskTextField
-                content={this.state.notesText}
-                name='notes'
-                label='Notes'
-                handlerFunction={this.handleNotesTextChange}
-              />
+            <EditTaskTextArea
+              label='Notes'
+              name='notes'
+              content={this.state.notesText}
+              handlerFunction={this.handleNotesTextChange}
+            />
             <div className='input-group-button'>
               <input type='submit' className='small-2 columns callout button submit-edit-task' value='Save' />
             </div>

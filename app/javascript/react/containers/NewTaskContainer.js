@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NewTaskTextField from '../components/NewTaskTextField'
+import NewTaskTextArea from '../components/NewTaskTextArea'
 
 class NewTaskContainer extends Component {
   constructor(props) {
@@ -63,23 +64,25 @@ class NewTaskContainer extends Component {
 
   render() {
     return(
-      <form onSubmit={this.handleFormSubmit} className="callout new-task-form">
-        <NewTaskTextField
-          content={this.state.text}
-          name='task'
-          label="Task"
-          handlerFunction={this.handleTaskTextChange}
-          />
-        <NewTaskTextField
+      <div>
+        <form onSubmit={this.handleFormSubmit} className="callout new-task-form">
+          <NewTaskTextField
             content={this.state.text}
-            name='notes'
-            label="Notes"
-            handlerFunction={this.handleNotesTextChange}
+            name='task'
+            label="Task"
+            handlerFunction={this.handleTaskTextChange}
           />
-        <div className='new-task-button'>
-          <input type='submit' className='callout button submit-new-task' value='+' />
-        </div>
-      </form>
+          <NewTaskTextArea
+              content={this.state.text}
+              name='notes'
+              label="Notes"
+              handlerFunction={this.handleNotesTextChange}
+          />
+          <div className='new-task-button'>
+            <input type='submit' className='callout button submit-new-task' value='+' />
+          </div>
+        </form>
+      </div>
     )
   }
 }
